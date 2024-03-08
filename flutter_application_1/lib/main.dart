@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/chatpage.dart';
+import 'package:flutter_application_1/landingpage.dart';
 
 void main() {
   runApp(ChatApp());
@@ -15,33 +17,15 @@ class ChatApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.deepOrange,
             scaffoldBackgroundColor: Colors.blue[100],
-            appBarTheme: AppBarTheme(
-              backgroundColor: Colors.deepOrange,
-            ),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               elevation: 2,
               backgroundColor: Colors.deepOrange,
             )),
-        home: LandingPage());
+        home: ChatPage());
   }
 }
 
-class LandingPage extends StatelessWidget {
-  const LandingPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print("Button Clicked");
-          },
-        ),
-        body: Text("Hello 3x"));
-  }
-}
 
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
