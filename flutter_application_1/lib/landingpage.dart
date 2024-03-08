@@ -13,14 +13,18 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print("Button Clicked");
-          },
-        ),
-        body: Column(children: [
+        // appBar: AppBar(),
+        // drawer: Drawer(),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     print("Button Clicked");
+        //   },
+        // ),
+        body: Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
           Text(
             "Let's sign you in!",
             style: TextStyle(
@@ -41,18 +45,19 @@ class LandingPage extends StatelessWidget {
           ),
 
           Image(image: AssetImage('../resources/banner_image.png')),
-          Container(
-            height: 50,
-            width: 50,
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(50),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: Colors.grey,
-            ),
-            child: FlutterLogo(),
-          )
-          // )
-        ]));
+        ])));
+
+    // Container(
+    //   height: 50,
+    //   width: 50,
+    //   padding: EdgeInsets.all(10),
+    //   margin: EdgeInsets.all(50),
+    //   decoration: BoxDecoration(
+    //     borderRadius: BorderRadius.circular(10.0),
+    //     color: Colors.grey,
+    //   ),
+    //   child: FlutterLogo(),
+    // )
+    // )
   }
 }
