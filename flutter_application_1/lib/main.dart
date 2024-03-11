@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/chatpage.dart';
 import 'package:flutter_application_1/landingpage.dart';
+import 'package:flutter_application_1/widgets/counter.dart';
 
 void main() {
   runApp(ChatApp());
@@ -21,7 +22,7 @@ class ChatApp extends StatelessWidget {
               elevation: 2,
               backgroundColor: Colors.deepOrange,
             )),
-        home: ChatPage());
+        home: CounterStateful());
   }
 }
 
