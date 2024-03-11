@@ -18,11 +18,12 @@ class ChatApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.deepOrange,
             scaffoldBackgroundColor: Colors.blue[100],
+            appBarTheme: AppBarTheme(backgroundColor: Colors.deepOrange[400]),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               elevation: 2,
               backgroundColor: Colors.deepOrange,
             )),
-        home: CounterStateful());
+        home: CounterStateful(buttonColor: Colors.grey));
   }
 }
 
