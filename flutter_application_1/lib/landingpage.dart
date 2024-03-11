@@ -10,6 +10,10 @@ Future<String> loadAsset() async {
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
 
+  void loginUser() {
+    print("login user successful!");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,31 +25,49 @@ class LandingPage extends StatelessWidget {
         //   },
         // ),
         body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-          Text(
-            "Let's sign you in!",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.deepOrange,
-              fontWeight: FontWeight.bold,
+            child: Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              "Let's sign you in!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.deepOrange,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          // Center(
-          // child:
-          Text(
-            "Welcome Back \n You've been missed!",
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.blueGrey,
+            // Center(
+            // child:
+            Text(
+              "Welcome Back \n You've been missed!",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.blueGrey,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
 
-          Image(image: AssetImage('../resources/banner_image.png')),
-        ])));
+            Image(
+              image: AssetImage('../resources/banner_image.png'),
+              height: 250,
+            ),
+            ElevatedButton(
+                onPressed: loginUser,
+                child: Text("Click me to login!",
+                    style:
+                        TextStyle(fontSize: 30, fontWeight: FontWeight.w300))),
+            OutlinedButton(onPressed: () {}, child: FlutterLogo()),
+            TextButton(
+                onPressed: () {
+                  print("Click the URL!");
+                },
+                child: Text("Text button"))
+          ]),
+    )));
 
     // Container(
     //   height: 50,
