@@ -2,17 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/widgets.dart';
 
 Future<String> loadAsset() async {
   return await rootBundle.loadString('assets/config.json');
 }
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({super.key});
+  LandingPage({super.key});
 
   void loginUser() {
-    print("login user successful!");
+    print(userNameController.text);
+    print(passwordController.text);
+    // print("login user successful!");
   }
+
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +61,42 @@ class LandingPage extends StatelessWidget {
               image: AssetImage('../resources/banner_image.png'),
               height: 250,
             ),
+            TextField(
+              controller: userNameController,
+              // onChanged: (value) {
+              //   print("value: $value");
+              // },
+              decoration: InputDecoration(
+                  hintText: "Add your username",
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder()),
+            ),
+            TextField(
+              controller: passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                  hintText: "Add your password",
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder()),
+            ),
             ElevatedButton(
                 onPressed: loginUser,
-                child: Text("Click me to login!",
+                child: Text("Login!",
                     style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.w300))),
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.w300))),
             OutlinedButton(onPressed: () {}, child: FlutterLogo()),
-            TextButton(
-                onPressed: () {
-                  print("Click the URL!");
-                },
-                child: Text("Text button"))
+            GestureDetector(
+              onTap: () {
+                //todo
+                print("Link clicked");
+              },
+              child: Column(
+                children: [
+                  Text("Find us at this URL"),
+                  Text("Text button"),
+                ],
+              ),
+            )
           ]),
     )));
 
