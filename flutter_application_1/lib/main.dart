@@ -23,7 +23,7 @@ class ChatApp extends StatelessWidget {
               elevation: 2,
               backgroundColor: Colors.deepOrange,
             )),
-        home: LandingPage());
+        home: ChatPage());
     // CounterStateful(buttonColor: Colors.grey));
   }
 }
