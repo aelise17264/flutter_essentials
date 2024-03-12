@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
@@ -11,10 +12,16 @@ Future<String> loadAsset() async {
 class LandingPage extends StatelessWidget {
   LandingPage({super.key});
 
+  final _formkey = GlobalKey<FormState>();
+
   void loginUser() {
-    print(userNameController.text);
-    print(passwordController.text);
-    // print("login user successful!");
+    if (_formkey.currentState != null && _formkey.currentState!.validate()) {
+      //
+
+      print(userNameController.text);
+      print(passwordController.text);
+      print("login user successful!");
+    }
   }
 
   final userNameController = TextEditingController();
@@ -61,24 +68,41 @@ class LandingPage extends StatelessWidget {
               image: AssetImage('../resources/banner_image.png'),
               height: 250,
             ),
-            TextField(
-              controller: userNameController,
-              // onChanged: (value) {
-              //   print("value: $value");
-              // },
-              decoration: InputDecoration(
-                  hintText: "Add your username",
-                  hintStyle: TextStyle(color: Colors.blueGrey),
-                  border: OutlineInputBorder()),
+            Form(
+              key: _formkey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: userNameController,
+                    validator: (value) {
+                      if (value != null &&
+                          value.isNotEmpty &&
+                          value.length < 5) {
+                        return "Your username needs to have at least 5 characters";
+                      } else if (value != null && value.isEmpty) {
+                        return "Do not forget to add your username";
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        hintText: "Add your username",
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                        border: OutlineInputBorder()),
+                  ),
+                  SizedBox(height: 24),
+                  TextFormField(
+                    controller: passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: "Add your password",
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                        border: OutlineInputBorder()),
+                  ),
+                ],
+              ),
             ),
-            TextField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                  hintText: "Add your password",
-                  hintStyle: TextStyle(color: Colors.blueGrey),
-                  border: OutlineInputBorder()),
-            ),
+            SizedBox(height: 24),
+
             ElevatedButton(
                 onPressed: loginUser,
                 child: Text("Login!",
