@@ -7,20 +7,27 @@ import 'package:flutter_application_1/widgets/chatbubble.dart';
 import 'package:flutter_application_1/widgets/chatinput.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  const ChatPage({Key? key}) : super(key: key);
 
-  get onPressed => null;
-
+  // get onPressed => null;
+  // final String username;
   @override
   Widget build(BuildContext context) {
+    final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           title: Text(
-            "Welcome Back User",
+            "Welcome Back $username",
             textAlign: TextAlign.center,
           ),
-          actions: [IconButton(onPressed: onPressed, icon: Icon(Icons.logout))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.popAndPushNamed(context, '/');
+                },
+                icon: Icon(Icons.logout))
+          ],
         ),
         body: Column(children: [
           Expanded(

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/chatpage.dart';
 
 Future<String> loadAsset() async {
   return await rootBundle.loadString('assets/config.json');
@@ -14,12 +15,17 @@ class LandingPage extends StatelessWidget {
 
   final _formkey = GlobalKey<FormState>();
 
-  void loginUser() {
+  void loginUser(context) {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
-      //
+      // navigate to chat page
+      Navigator.pushReplacementNamed(context, '/chat',
+          arguments: '${userNameController.text}');
+      // MaterialPageRoute(
+      //     builder: (context) => ChatPage(
+      //           username: userNameController.text,
+      //         ))
+      //         );
 
-      print(userNameController.text);
-      print(passwordController.text);
       print("login user successful!");
     }
   }
@@ -66,7 +72,7 @@ class LandingPage extends StatelessWidget {
 
             Image(
               image: AssetImage('../resources/banner_image.png'),
-              height: 250,
+              height: 150,
             ),
             Form(
               key: _formkey,
@@ -104,7 +110,9 @@ class LandingPage extends StatelessWidget {
             SizedBox(height: 24),
 
             ElevatedButton(
-                onPressed: loginUser,
+                onPressed: () {
+                  loginUser(context);
+                },
                 child: Text("Login!",
                     style:
                         TextStyle(fontSize: 24, fontWeight: FontWeight.w300))),
