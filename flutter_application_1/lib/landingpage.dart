@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/chatpage.dart';
+import 'package:flutter_application_1/utils/spaces.dart';
+import 'package:flutter_application_1/utils/textfieldstyles.dart';
+import 'package:flutter_application_1/widgets/logintextfield.dart';
 
 Future<String> loadAsset() async {
   return await rootBundle.loadString('assets/config.json');
@@ -78,8 +81,9 @@ class LandingPage extends StatelessWidget {
               key: _formkey,
               child: Column(
                 children: [
-                  TextFormField(
+                  LoginTextField(
                     controller: userNameController,
+                    hintText: "Add your username",
                     validator: (value) {
                       if (value != null &&
                           value.isNotEmpty &&
@@ -90,24 +94,17 @@ class LandingPage extends StatelessWidget {
                       }
                       return null;
                     },
-                    decoration: InputDecoration(
-                        hintText: "Add your username",
-                        hintStyle: TextStyle(color: Colors.blueGrey),
-                        border: OutlineInputBorder()),
                   ),
-                  SizedBox(height: 24),
-                  TextFormField(
+                  verticalSpacer(24),
+                  LoginTextField(
                     controller: passwordController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        hintText: "Add your password",
-                        hintStyle: TextStyle(color: Colors.blueGrey),
-                        border: OutlineInputBorder()),
+                    hintText: "Enter a strong password",
+                    hasObscurity: true,
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 24),
+            verticalSpacer(24),
 
             ElevatedButton(
                 onPressed: () {

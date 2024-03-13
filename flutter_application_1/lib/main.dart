@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/chatpage.dart';
 import 'package:flutter_application_1/landingpage.dart';
+import 'package:flutter_application_1/utils/brandcolors.dart';
 import 'package:flutter_application_1/widgets/counter.dart';
 
 void main() {
@@ -16,12 +17,11 @@ class ChatApp extends StatelessWidget {
     return MaterialApp(
         title: "Flutter Chat App",
         theme: ThemeData(
-            primarySwatch: Colors.deepOrange,
-            scaffoldBackgroundColor: Colors.blue[100],
-            appBarTheme: AppBarTheme(backgroundColor: Colors.deepOrange[400]),
+            scaffoldBackgroundColor: BrandColor.backgroundColor,
+            appBarTheme: AppBarTheme(backgroundColor: BrandColor.primaryColor),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               elevation: 2,
-              backgroundColor: Colors.deepOrange,
+              backgroundColor: BrandColor.primaryColor,
             )),
         home: LandingPage(),
         routes: {'/chat': (context) => ChatPage()});
