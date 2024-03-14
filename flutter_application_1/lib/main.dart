@@ -18,7 +18,9 @@ class ChatApp extends StatelessWidget {
         title: "Flutter Chat App",
         theme: ThemeData(
             scaffoldBackgroundColor: BrandColor.backgroundColor,
-            appBarTheme: AppBarTheme(backgroundColor: BrandColor.primaryColor),
+            appBarTheme: AppBarTheme(
+              backgroundColor: BrandColor.thirdColor,
+            ),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               elevation: 2,
               backgroundColor: BrandColor.primaryColor,

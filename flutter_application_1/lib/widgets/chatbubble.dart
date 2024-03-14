@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/utils/brandcolors.dart';
 
 class ChatBubble extends StatelessWidget {
   final String message;
@@ -16,7 +17,7 @@ class ChatBubble extends StatelessWidget {
         padding: EdgeInsets.all(24),
         margin: EdgeInsets.all(50),
         decoration: BoxDecoration(
-            color: Colors.red,
+            color: BrandColor.thirdColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),

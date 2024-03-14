@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/chatpage.dart';
+import 'package:flutter_application_1/utils/brandcolors.dart';
 import 'package:flutter_application_1/utils/spaces.dart';
 import 'package:flutter_application_1/utils/textfieldstyles.dart';
 import 'package:flutter_application_1/widgets/logintextfield.dart';
@@ -58,7 +59,7 @@ class LandingPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.deepOrange,
+                color: BrandColor.primaryColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -68,13 +69,13 @@ class LandingPage extends StatelessWidget {
               "Welcome Back \n You've been missed!",
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.blueGrey,
+                color: BrandColor.secondaryColor,
               ),
               textAlign: TextAlign.center,
             ),
 
-            Image(
-              image: AssetImage('../resources/banner_image.png'),
+            Image.asset(
+              'resources/banner_image.png',
               height: 150,
             ),
             Form(

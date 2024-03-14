@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../utils/brandcolors.dart';
+
 class ChatInput extends StatelessWidget {
   ChatInput({super.key});
   // get onPressed => null;
@@ -33,7 +35,7 @@ class ChatInput extends StatelessWidget {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Type your message",
-                  hintStyle: TextStyle(color: Colors.blueGrey[300]),
+                  hintStyle: TextStyle(color: BrandColor.secondaryColor),
                 ),
               ),
             ),
