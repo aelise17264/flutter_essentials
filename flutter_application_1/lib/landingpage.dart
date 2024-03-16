@@ -9,6 +9,7 @@ import 'package:flutter_application_1/utils/brandcolors.dart';
 import 'package:flutter_application_1/utils/spaces.dart';
 import 'package:flutter_application_1/utils/textfieldstyles.dart';
 import 'package:flutter_application_1/widgets/logintextfield.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Future<String> loadAsset() async {
   return await rootBundle.loadString('assets/config.json');
@@ -36,6 +37,7 @@ class LandingPage extends StatelessWidget {
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+  final Uri urlLink = Uri.parse('https://brander-portfolio.netlify.app/');
 
   @override
   Widget build(BuildContext context) {
@@ -116,9 +118,12 @@ class LandingPage extends StatelessWidget {
                         TextStyle(fontSize: 24, fontWeight: FontWeight.w300))),
             OutlinedButton(onPressed: () {}, child: FlutterLogo()),
             GestureDetector(
-              onTap: () {
+              onTap: () async {
                 //todo
                 print("Link clicked");
+                if (!await launchUrl(urlLink)) {
+                  throw Exception('Could not launch $urlLink');
+                }
               },
               child: Column(
                 children: [
