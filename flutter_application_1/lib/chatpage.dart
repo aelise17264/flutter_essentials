@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/models/chatmessage.dart';
 import 'package:flutter_application_1/utils/brandcolors.dart';
 import 'package:flutter_application_1/widgets/chatbubble.dart';
 import 'package:flutter_application_1/widgets/chatinput.dart';
@@ -18,9 +19,9 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           // backgroundColor: Colors.transparent,
+          centerTitle: true,
           title: Text(
             "Welcome Back $username",
-            textAlign: TextAlign.center,
             // style: TextStyle(color: BrandColor.secondaryColor),
           ),
           actions: [
@@ -41,7 +42,11 @@ class ChatPage extends StatelessWidget {
                         alignment: index % 2 == 0
                             ? Alignment.centerLeft
                             : Alignment.centerRight,
-                        message: "Another Message");
+                        message: ChatMessage(
+                            id: '4321',
+                            text: 'First Message',
+                            createdAt: DateTime.now().microsecondsSinceEpoch,
+                            author: Author(userName: "user2")));
                   })
               // (children: [
               //   ChatBubble(

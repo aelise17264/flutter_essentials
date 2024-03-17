@@ -1,11 +1,15 @@
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/models/chatmessage.dart';
 import 'package:flutter_application_1/utils/brandcolors.dart';
 
 class ChatBubble extends StatelessWidget {
-  final String message;
+  final ChatMessage message;
   final Alignment alignment;
+
   const ChatBubble({Key? key, required this.alignment, required this.message})
       : super(key: key);
 
@@ -24,10 +28,16 @@ class ChatBubble extends StatelessWidget {
                 bottomLeft: Radius.circular(12))),
         child: Column(
           children: [
-            Text(message, style: TextStyle(fontSize: 20)),
-            Icon(
-              Icons.question_answer,
-            )
+            Text(message.text, style: TextStyle(fontSize: 20)),
+            if (message.imageUrl != null)
+              Image.network(
+                '${message.imageUrl}',
+                height: 200,
+              )
+
+            // Icon(
+            //   Icons.question_answer,
+            // )
           ],
           mainAxisSize: MainAxisSize.min,
         ),
