@@ -35,7 +35,7 @@ class ChatInput extends StatelessWidget {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Type your message",
-                  hintStyle: TextStyle(color: BrandColor.secondaryColor),
+                  hintStyle: TextStyle(color: BrandColor.backgroundColor),
                 ),
               ),
             ),
