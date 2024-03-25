@@ -2,17 +2,28 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/models/chatmessage.dart';
 
 import '../utils/brandcolors.dart';
 
 class ChatInput extends StatelessWidget {
-  ChatInput({super.key});
+  final Function(ChatMessage) onSubmit;
+
+  ChatInput({Key? key, required this.onSubmit}) : super(key: key);
   // get onPressed => null;
 
   final chatMessageController = TextEditingController();
 
   void onSendButtonPressed() {
     print("Chat message sent");
+
+    final newChatMessage = ChatMessage(
+        text: chatMessageController.text,
+        id: '244',
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        author: Author(userName: 'opal1'));
+
+    onSubmit(newChatMessage);
   }
 
   @override
