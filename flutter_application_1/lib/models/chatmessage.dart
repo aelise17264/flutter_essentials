@@ -19,7 +19,8 @@ class ChatMessage {
         text: json['text'],
         id: json['id'],
         createdAt: json['createdAt'],
-        author: Author.fromJson(json['author']));
+        author: Author.fromJson(json['author']),
+        imageUrl: json['image']);
   }
 }
 
