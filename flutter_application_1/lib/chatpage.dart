@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/models/imagemodel.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_application_1/models/chatmessage.dart';
+import 'package:flutter_application_1/repo/imagerepo.dart';
 import 'package:flutter_application_1/widgets/chatbubble.dart';
 import 'package:flutter_application_1/widgets/chatinput.dart';
 
@@ -39,31 +39,13 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
-  Future<List<PixelfromImage>> _getNetworkImages() async {
-    //this api call will not work because this api site no longer exists
-    var endpointUrl = Uri.parse('https://pixelford.com/api2/images');
-
-    final response = await http.get(endpointUrl);
-
-    if (response.statusCode == 200) {
-      final List<dynamic> decodedList = jsonDecode(response.body) as List;
-
-      final List<PixelfromImage> _imageList = decodedList.map((listItem) {
-        return PixelfromImage.fromJson(listItem);
-      }).toList();
-
-      print(_imageList[0].urlFullSize);
-      return _imageList;
-    } else {
-      throw Exception("API call not successful");
-    }
-  }
+  final ImageRepo _imageRepo = ImageRepo();
 
   @override
   void initState() {
     // TODO: implement initState
     _loadInitialMessages();
-    _getNetworkImages();
+    // _getNetworkImages();
     super.initState();
   }
 
@@ -89,7 +71,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         body: Column(children: [
           FutureBuilder<List<PixelfromImage>>(
-              future: _getNetworkImages(),
+              future: _imageRepo.getNetworkImages(),
               builder:
                   ((context, AsyncSnapshot<List<PixelfromImage>> snapshot) {
                 if (snapshot.hasData) {
