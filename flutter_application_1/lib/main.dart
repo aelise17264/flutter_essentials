@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/chatpage.dart';
 import 'package:flutter_application_1/landingpage.dart';
 import 'package:flutter_application_1/services/authservice.dart';
@@ -11,7 +12,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AuthService.init();
-  runApp(Provider(
+  runApp(ChangeNotifierProvider(
       create: (BuildContext context) => AuthService(), child: ChatApp()));
 }
 
