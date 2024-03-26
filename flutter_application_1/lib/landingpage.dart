@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/chatpage.dart';
+import 'package:flutter_application_1/services/authservice.dart';
 import 'package:flutter_application_1/utils/brandcolors.dart';
 import 'package:flutter_application_1/utils/spaces.dart';
 import 'package:flutter_application_1/utils/textfieldstyles.dart';
 import 'package:flutter_application_1/widgets/logintextfield.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
 
@@ -21,8 +23,9 @@ class LandingPage extends StatelessWidget {
 
   final _formkey = GlobalKey<FormState>();
 
-  void loginUser(context) {
+  Future<void> loginUser(BuildContext context) async {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
+      await context.read<AuthService>().loginUser(userNameController.text);
       // navigate to chat page
       Navigator.pushReplacementNamed(context, '/chat',
           arguments: '${userNameController.text}');
@@ -118,8 +121,8 @@ class LandingPage extends StatelessWidget {
                       verticalSpacer(24),
 
                       ElevatedButton(
-                          onPressed: () {
-                            loginUser(context);
+                          onPressed: () async {
+                            await loginUser(context);
                           },
                           child: Text("Login!",
                               style: TextStyle(
@@ -195,18 +198,5 @@ class LandingPage extends StatelessWidget {
                             ),
                           ]),
                     ]))));
-
-    // Container(
-    //   height: 50,
-    //   width: 50,
-    //   padding: EdgeInsets.all(10),
-    //   margin: EdgeInsets.all(50),
-    //   decoration: BoxDecoration(
-    //     borderRadius: BorderRadius.circular(10.0),
-    //     color: Colors.grey,
-    //   ),
-    //   child: FlutterLogo(),
-    // )
-    // )
   }
 }
