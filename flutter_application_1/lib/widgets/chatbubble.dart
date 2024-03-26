@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/models/chatmessage.dart';
+import 'package:flutter_application_1/services/authservice.dart';
 import 'package:flutter_application_1/utils/brandcolors.dart';
+import 'package:provider/provider.dart';
 
 class ChatBubble extends StatelessWidget {
   final ChatMessage message;
@@ -15,7 +17,8 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isAuthor = message.author.userName == 'opal1';
+    bool isAuthor =
+        message.author.userName == context.read<AuthService>().getUserName();
 
     return Align(
       alignment: alignment,

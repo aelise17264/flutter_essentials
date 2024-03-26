@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/models/chatmessage.dart';
+import 'package:flutter_application_1/services/authservice.dart';
 import 'package:flutter_application_1/widgets/imagepicker.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/brandcolors.dart';
 
@@ -27,7 +29,7 @@ class _ChatInputState extends State<ChatInput> {
         text: chatMessageController.text,
         id: '244',
         createdAt: DateTime.now().millisecondsSinceEpoch,
-        author: Author(userName: 'opal1'));
+        author: Author(userName: context.read<AuthService>().getUserName()));
 
     if (_selectedImageUrl.isNotEmpty) {
       newChatMessage.imageUrl = _selectedImageUrl;

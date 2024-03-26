@@ -7,8 +7,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/models/imagemodel.dart';
 import 'package:flutter_application_1/models/chatmessage.dart';
 import 'package:flutter_application_1/repo/imagerepo.dart';
+import 'package:flutter_application_1/services/authservice.dart';
 import 'package:flutter_application_1/widgets/chatbubble.dart';
 import 'package:flutter_application_1/widgets/chatinput.dart';
+import 'package:provider/provider.dart';
 
 class ChatPage extends StatefulWidget {
   ChatPage({Key? key}) : super(key: key);
@@ -86,21 +88,12 @@ class _ChatPageState extends State<ChatPage> {
                   itemCount: _messages.length,
                   itemBuilder: (context, index) {
                     return ChatBubble(
-                        alignment: _messages[index].author.userName == 'opal1'
+                        alignment: _messages[index].author.userName ==
+                                context.read<AuthService>().getUserName()
                             ? Alignment.centerLeft
                             : Alignment.centerRight,
                         message: _messages[index]);
-                  })
-              // (children: [
-              //   ChatBubble(
-              //       alignment: Alignment.centerLeft, message: "Message #1"),
-              //   ChatBubble(
-              //       alignment: Alignment.centerRight, message: "Message #2"),
-              //   ChatBubble(
-              //       alignment: Alignment.centerLeft, message: "Message #3"),
-              // ])
-
-              ),
+                  })),
           ChatInput(
             onSubmit: onMessageSent,
           )
