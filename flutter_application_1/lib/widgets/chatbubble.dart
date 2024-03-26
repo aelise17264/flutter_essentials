@@ -15,15 +15,19 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isAuthor = message.author.userName == 'opal1';
+
     return Align(
       alignment: alignment,
       child: Container(
         constraints:
-            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.6),
         padding: EdgeInsets.all(24),
-        margin: EdgeInsets.all(50),
+        margin: EdgeInsets.all(25),
         decoration: BoxDecoration(
-            color: BrandColor.thirdColor,
+            color: isAuthor
+                ? Theme.of(context).primaryColor
+                : BrandColor.chatInputColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
@@ -32,9 +36,13 @@ class ChatBubble extends StatelessWidget {
           children: [
             Text(message.text, style: TextStyle(fontSize: 20)),
             if (message.imageUrl != null)
-              Image.network(
-                '${message.imageUrl}',
+              Container(
                 height: 200,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                        image: NetworkImage(message.imageUrl!))),
               )
 
             // Icon(

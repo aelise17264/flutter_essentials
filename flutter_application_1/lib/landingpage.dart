@@ -76,11 +76,18 @@ class LandingPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center,
                       ),
-
-                      Image.asset(
-                        'resources/banner_image.png',
-                        height: 150,
+                      verticalSpacer(24),
+                      Container(
+                        height: 200,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            image: DecorationImage(
+                                fit: BoxFit.fitWidth,
+                                image:
+                                    AssetImage('resources/banner_image.png'))),
                       ),
+                      verticalSpacer(24),
                       Form(
                         key: _formkey,
                         child: Column(
