@@ -8,7 +8,9 @@ import 'package:flutter_application_1/utils/brandcolors.dart';
 import 'package:flutter_application_1/widgets/counter.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AuthService.init();
   runApp(Provider(
       create: (BuildContext context) => AuthService(), child: ChatApp()));
 }
